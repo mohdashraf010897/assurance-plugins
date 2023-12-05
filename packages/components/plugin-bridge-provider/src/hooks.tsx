@@ -16,6 +16,7 @@
  **************************************************************************/
 
 import { useContext, useMemo } from "react";
+import * as kit from '@adobe/griffon-toolkit';
 import { 
   EventContext,
   NavigationContext,
@@ -23,7 +24,11 @@ import {
   SettingsContext,
   ValidationContext,
 } from "./Contexts";
-import type { GenericObject } from "./types";
+import type { EventFilterConfig } from "./types";
+import extractFilteredEvents from "./utils/extract.filtered.events";
+import extractClientEvents from "./utils/extract.client.events";
+import extractSelectedClients from "./utils/extract.selected.clients";
+
 
 function checkContext(context: any, check = true) {
   if (context && Object.keys(context).length === 0 && check) {
@@ -64,14 +69,31 @@ export const useTenant = (check = true) => {
   return context?.tenant;
 }
 
-export const useNavigation = (check = true) => {
+export const useNavigationPath = (check = true) => {
   const context = checkContext(useContext(NavigationContext), check);
   return context?.path;
 }
 
-export const useEvents = (check = true) => {
+export const useNavigationFilters = (check = true) => {
+  const context = checkContext(useContext(NavigationContext), check);
+  return context?.filters;
+}
+
+export const useFilteredEvents = (config: EventFilterConfig = {
+  sorted: true,
+  filtered: false,
+  hideLogs: false,
+  ignoreFilters: [],
+  matchers: [],
+  validations: false
+}, check = true) => {
   const context = checkContext(useContext(EventContext), check);
-  return context?.events;
+  const validation = useContext(ValidationContext);
+  const navigation = useContext(NavigationContext);
+
+  return useMemo(() => {
+    return extractFilteredEvents(config, context?.events, navigation?.filters, validation?.validation);
+  }, [context?.events, navigation?.filters, validation?.validation]);
 }
 
 export const useSelectedEvents = (check = true) => {
@@ -81,6 +103,24 @@ export const useSelectedEvents = (check = true) => {
 
 export const useValidation = (check = true) => {
   const context = checkContext(useContext(ValidationContext), check);
-  console.log("UV", context);
   return context?.validation;
+}
+
+export const useClients = (check = true) => {
+  const events = useFilteredEvents({
+    sorted: true,
+    filtered: true,
+    ignoreFilters: ['clients']
+  });
+
+  return useMemo(() => {
+    return extractClientEvents(events);
+  }, [events]);
+}
+
+export const useSelectedClients = (check = true) => {
+  const clients = useClients(check);
+  const filters = useNavigationFilters(check);
+
+  return extractSelectedClients(clients, filters);
 }

@@ -31,16 +31,8 @@ import type {
   BridgeSelectedEvents,
   BridgeSettings,
   BridgeValidation,
-  PluginBridgeConfig 
 } from './types';
-
-type PluginBridge = {
-  register: (plugin: PluginBridgeConfig) => void;
-}
-
-declare global {
-  interface Window { pluginBridge: PluginBridge; }
-}
+import extractNavigation from './utils/extract.navigation';
 
 export type PluginBridgeProviderProps = {
   children?: React.ReactNode;
@@ -57,14 +49,14 @@ const PluginBridgeProvider = ({
   const [bridgeValidation, setBridgeValidation] = React.useState<BridgeValidation | null>(null);
 
   useEffect(() => {
-    (window.pluginBridge as PluginBridge).register({
+    window.pluginBridge.register({
       init(options) {
         console.log("INIT!", options);
         setBridgeSettings(options);
       },
       navigateTo(navigation) {
         console.log("NAV", navigation);
-        setBridgeNavigation({ path: navigation });
+        setBridgeNavigation(extractNavigation(navigation));
       },
       receiveConnections(connections) {
         console.log("CON", connections);
@@ -99,8 +91,6 @@ const PluginBridgeProvider = ({
   if (!bridgeSettings) {
     return null;
   }
-
-  console.log("bridgeE", bridgeEvents);
 
   const contexts = [
     { context: SettingsContext, value: bridgeSettings },

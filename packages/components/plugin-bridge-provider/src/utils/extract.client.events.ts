@@ -15,6 +15,25 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as PluginBridgeProvider } from './Provider';
+import * as R from 'ramda';
+import { clientInfo } from '@adobe/griffon-toolkit-common';
+import type { Events } from '../types';
 
-export * from './hooks';
+export default (events: Events): Events => {
+  const map = {};
+
+  R.forEach(
+    (event) => {
+      const { clientId } = event;
+      if ((!map[clientId] || !map[clientId].uuid) && clientInfo.isMatch(event)) {
+        map[clientId] = { ...event };
+      } else if (!map[clientId]) {
+        map[clientId] = { clientId };
+      }
+    },
+    events
+  );
+
+  return R.values(map);
+};
+

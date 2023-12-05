@@ -17,8 +17,9 @@
   },
   "workspaces": {
     "packages": [
-      "packages/providers/plugin-bridge-provider",
-      "packages/ui-plugins/edge-profile"
+      "packages/common/*",
+      "packages/ui-plugins/*",
+      "packages/components/*"
     ]
   },
   "dependencies": {
@@ -68,6 +69,7 @@
   },
   "devDependencies": {
     "@parcel/packager-ts": "2.10.3",
+    "@parcel/transformer-sass": "2.10.3",
     "@parcel/transformer-typescript-types": "2.10.3",
     "@storybook/addon-essentials": "^7.6.3",
     "@storybook/addon-interactions": "^7.6.3",

@@ -15,19 +15,30 @@
  * from Adobe.
  **************************************************************************/
 
-import { createContext } from "react";
-import type { 
-  BridgeConnections,
-  BridgeEvents,
-  BridgeNavigation,
-  BridgeSelectedEvents,
-  BridgeSettings,
-  BridgeValidations, 
-} from './types';
+import React from "react";
+import { Flex, Text } from "@adobe/react-spectrum";
+import { useSelectedEvents } from "@assurance/plugin-bridge-provider";
+import type { Event } from "@assurance/common-utils";
+import { chooseEventLabel } from "@assurance/common-utils";
 
-export const ConnectionContext = createContext<BridgeConnections | null>(null);
-export const EventContext = createContext<BridgeEvents | null>(null);
-export const NavigationContext = createContext<BridgeNavigation | null>(null);
-export const SelectedEventContext = createContext<BridgeSelectedEvents | null>(null);
-export const SettingsContext = createContext<BridgeSettings | null>(null);
-export const ValidationContext = createContext<BridgeValidations | null>(null);
+const makeLabel = (e: Event) => (e ? (e.timelineDetails || chooseEventLabel(e)) : '');
+
+const SelectedEventPicker = () => {
+  const selected = useSelectedEvents();
+
+  if (!selected) { return null; }
+  
+  // TODO: Hightlights
+
+  return (
+    <Flex gap="size-200">
+      {selected.length > 1 ? (
+        <Text>Multiple selected events</Text>
+      ) : (
+        <Text>{makeLabel(selected[0])}</Text>
+      )}
+    </Flex>
+  );
+};
+
+export default SelectedEventPicker;

@@ -15,6 +15,24 @@
  * from Adobe.
  **************************************************************************/
 
+import type { Event, GenericObject } from '@assurance/common-utils';
+
+type PluginBridge = {
+  register: (plugin: PluginBridgeConfig) => void;
+  annotateEvent: (event: any) => Promise<void>;
+  annotateSession: (session: any) => Promise<void>;
+  deletePlugin: (uuid: string) => Promise<void>;
+  flushConnection: (namespace: string, context: any) => Promise<void>;
+  navigateTo: (path: string) => Promise<void>;
+  selectEvents: (events: any) => Promise<void>;
+  sendCommand: (command: any) => Promise<void>;
+  uploadPlugin: (contents: any) => Promise<void>;
+}
+
+declare global {
+  interface Window { pluginBridge: PluginBridge; }
+}
+
 export type PluginBridgeConfig = {
   init: (options: BridgeSettings) => void;
   navigateTo: (navigation: string) => void;
@@ -27,18 +45,23 @@ export type PluginBridgeConfig = {
   receiveValidation: (validation: any) => void;
 };
 
-export type GenericObject = Record<string, unknown>;
+export type Events = Event[];
+
+export type Filters = {
+  clients?: string[];
+}
 
 export type BridgeConnections = {
   connections: GenericObject[];
 }
 
 export type BridgeEvents = {
-  events?: GenericObject[];
+  events?: Events;
 };
 
 export type BridgeNavigation = {
   path: string;
+  filters: Filters; 
 }
 
 export type BridgeSelectedEvents = {
@@ -56,7 +79,7 @@ export type BridgeSettings = {
 }
 
 export type BridgeValidation = {
-  validation: Record<string, ValidatiobnRecord>;
+  validation: ValidationRecords;
 };
 
 export type ValidationResult = {
@@ -65,7 +88,7 @@ export type ValidationResult = {
   result: string;
 };
 
-export type ValidatiobnRecord = {
+export type ValidationRecord = {
   category: string,
   container: string,
   description: string,
@@ -76,4 +99,16 @@ export type ValidatiobnRecord = {
   orgId: string,
   results: ValidationResult,
   type: string,
+};
+
+export type ValidationRecords = Record<string, ValidationRecord>;
+
+
+export type EventFilterConfig = {
+  sorted?: boolean;
+  filtered?: boolean;
+  hideLogs?: boolean;
+  ignoreFilters?: string[];
+  matchers?: string[];
+  validations?: boolean;
 };
