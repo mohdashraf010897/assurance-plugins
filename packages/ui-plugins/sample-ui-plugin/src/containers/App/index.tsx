@@ -22,8 +22,8 @@ import {
   useFlags,
   useImsAccessToken,
   useImsOrg,
-  useNavigation,
-  useEvents,
+  useNavigationPath,
+  useFilteredEvents,
   useTenant,
   useValidation,
 } from '@assurance/plugin-bridge-provider';
@@ -35,8 +35,8 @@ const Inner = () => {
   const imsAccsessToken = useImsAccessToken();
   const imsOrg = useImsOrg();
   const tenant = useTenant();
-  const navigation = useNavigation();
-  const events = useEvents();
+  const navigation = useNavigationPath();
+  const events = useFilteredEvents();
   const validation = useValidation();
 
   return (
