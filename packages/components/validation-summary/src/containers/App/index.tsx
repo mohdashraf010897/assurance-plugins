@@ -21,16 +21,13 @@ import {
 } from '@assurance/plugin-bridge-provider';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import Validation from '../../components/ValidationView';
-import PluginView from '../../components/PluginView';
 
 const App = () => {
   return (
     <Provider theme={defaultTheme} colorScheme="light">
       <PluginBridgeProvider>
-      
-  <div style={{ color: 'red', fontSize: '20px' }}>Plugin Goes Here</div>
-  <Validation />
-
+      <div style={{ color: 'red', fontSize: '20px' }}>Plugin Goes Here</div>
+      <Validation />
       </PluginBridgeProvider>
     </Provider>
   );
