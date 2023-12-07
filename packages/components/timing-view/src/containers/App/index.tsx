@@ -15,5 +15,30 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as PluginView } from './components/PluginView';
-export { default as TimelineToolbar } from './components/TimelineToolbar';
+import React from 'react';
+import { 
+  PluginBridgeProvider, useFilteredEvents
+} from '@assurance/plugin-bridge-provider';
+import { PluginView, TimelineToolbar } from '@assurance/timeline-bar';
+import { defaultTheme, Provider } from '@adobe/react-spectrum';
+import TimingView from '../../components/TimingView';
+
+const Inner = () => {
+  const events = useFilteredEvents();
+  return <TimingView events={events} />;
+};
+
+const App = () => {
+  return (
+    <Provider theme={defaultTheme} colorScheme="light">
+      <PluginBridgeProvider>
+        <PluginView>
+          <Inner />
+          <TimelineToolbar />
+        </PluginView>
+      </PluginBridgeProvider>
+    </Provider>
+  );
+};
+
+export default App;

@@ -2,7 +2,7 @@
  * ADOBE CONFIDENTIAL
  * ___________________
  *
- *  Copyright 2023 Adobe
+ *  Copyright 2022 Adobe
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -15,5 +15,8 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as PluginView } from './components/PluginView';
-export { default as TimelineToolbar } from './components/TimelineToolbar';
+import App from './containers/App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(<App />, document.getElementById('root'));

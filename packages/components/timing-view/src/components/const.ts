@@ -15,5 +15,4 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as PluginView } from './components/PluginView';
-export { default as TimelineToolbar } from './components/TimelineToolbar';
+export const COLORS = ['celery-400', 'orange-400', 'seafoam-400', 'magenta-400', 'yellow-400', 'magenta-400', 'seafoam-400', 'orange-400', 'red-400', 'yellow-400', 'chartreuse-400', 'cyan-400', 'green-400', 'indigo-400']

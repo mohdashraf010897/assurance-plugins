@@ -15,5 +15,9 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as PluginView } from './components/PluginView';
-export { default as TimelineToolbar } from './components/TimelineToolbar';
+export type Branch = {
+  event: Event;
+  children: Branches;
+};
+
+export type Branches = Record<string, Branch>;

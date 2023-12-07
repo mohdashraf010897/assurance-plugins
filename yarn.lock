@@ -4306,17 +4306,6 @@
     "@react-types/checkbox" "^3.6.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-aria/toolbar@3.0.0-beta.0":
-  version "3.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/toolbar/-/toolbar-3.0.0-beta.0.tgz#d6937235a5f9872f996528eb1b5fb066dd31d734"
-  integrity sha512-5DCnasHCKxpzm2g7NkFggZF4A65snLL7Nz+0dhqvFTHVLYPEzgKnx7nJ4tFO9z7i9BL8+HrNmaur/eE+OVKVJg==
-  dependencies:
-    "@react-aria/focus" "^3.15.0"
-    "@react-aria/i18n" "^3.9.0"
-    "@react-aria/utils" "^3.22.0"
-    "@react-types/shared" "^3.22.0"
-    "@swc/helpers" "^0.5.0"
-
 "@react-aria/tooltip@^3.6.5":
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/@react-aria/tooltip/-/tooltip-3.6.5.tgz#aeb4c71db46f2c9ad0ff0b6810002bdacc07fea1"
@@ -7766,7 +7755,7 @@
   resolved "https://registry.yarnpkg.com/@types/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#ee1bd8c9f7a01b3445786aad0ef23aba5f511a44"
   integrity sha512-nj39q0wAIdhwn7DGUyT9irmsKK1tV0bd5WFEhgpqNTMFZ8cE+jieuTphCW0tfdm47S2zVT5mr09B28b1chmQMA==
 
-"@types/prop-types@*":
+"@types/prop-types@*", "@types/prop-types@^15.7.3":
   version "15.7.11"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.11.tgz#2596fb352ee96a1379c657734d4b913a613ad563"
   integrity sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==
@@ -16265,68 +16254,6 @@ raw-loader@^4.0.2:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-react-aria-components@^1.0.0-rc.0:
-  version "1.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/react-aria-components/-/react-aria-components-1.0.0-rc.0.tgz#6c2a2bf57bfb0c2d86125d32feb947b06241028e"
-  integrity sha512-N8fE1iMd8dBxKOmN3XEk+RloHGOcOMEJyeabZCJRDY2F4M2GWYpZ4vCYad1jDD+UByumGW4JZInnDh1FlXdDZw==
-  dependencies:
-    "@internationalized/date" "^3.5.0"
-    "@react-aria/focus" "^3.15.0"
-    "@react-aria/interactions" "^3.20.0"
-    "@react-aria/toolbar" "3.0.0-beta.0"
-    "@react-aria/utils" "^3.22.0"
-    "@react-stately/table" "^3.11.3"
-    "@react-types/form" "^3.6.0"
-    "@react-types/grid" "^3.2.3"
-    "@react-types/shared" "^3.22.0"
-    "@react-types/table" "^3.9.1"
-    "@swc/helpers" "^0.5.0"
-    react-aria "^3.30.0"
-    react-stately "^3.28.0"
-    use-sync-external-store "^1.2.0"
-
-react-aria@^3.30.0:
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/react-aria/-/react-aria-3.30.0.tgz#dd53d2103050e7279ec8f3faacce5ae8521f61ce"
-  integrity sha512-ULMlmH68/jXzkDaMjuM9O8dKCxnAYviW4E5sywfLX4J6mC6eGsQzoqtwWeQgr1M9SJqLfgKaVoDP1dLvb4XzEA==
-  dependencies:
-    "@react-aria/breadcrumbs" "^3.5.8"
-    "@react-aria/button" "^3.9.0"
-    "@react-aria/calendar" "^3.5.3"
-    "@react-aria/checkbox" "^3.12.0"
-    "@react-aria/combobox" "^3.8.0"
-    "@react-aria/datepicker" "^3.9.0"
-    "@react-aria/dialog" "^3.5.8"
-    "@react-aria/dnd" "^3.5.0"
-    "@react-aria/focus" "^3.15.0"
-    "@react-aria/gridlist" "^3.7.2"
-    "@react-aria/i18n" "^3.9.0"
-    "@react-aria/interactions" "^3.20.0"
-    "@react-aria/label" "^3.7.3"
-    "@react-aria/link" "^3.6.2"
-    "@react-aria/listbox" "^3.11.2"
-    "@react-aria/menu" "^3.11.2"
-    "@react-aria/meter" "^3.4.8"
-    "@react-aria/numberfield" "^3.10.0"
-    "@react-aria/overlays" "^3.19.0"
-    "@react-aria/progress" "^3.4.8"
-    "@react-aria/radio" "^3.9.0"
-    "@react-aria/searchfield" "^3.6.0"
-    "@react-aria/select" "^3.14.0"
-    "@react-aria/selection" "^3.17.2"
-    "@react-aria/separator" "^3.3.8"
-    "@react-aria/slider" "^3.7.3"
-    "@react-aria/ssr" "^3.9.0"
-    "@react-aria/switch" "^3.5.7"
-    "@react-aria/table" "^3.13.2"
-    "@react-aria/tabs" "^3.8.2"
-    "@react-aria/tag" "^3.3.0"
-    "@react-aria/textfield" "^3.13.0"
-    "@react-aria/tooltip" "^3.6.5"
-    "@react-aria/utils" "^3.22.0"
-    "@react-aria/visually-hidden" "^3.8.7"
-    "@react-types/shared" "^3.22.0"
-
 react-colorful@^5.1.2:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.6.1.tgz#7dc2aed2d7c72fac89694e834d179e32f3da563b"
@@ -16497,35 +16424,6 @@ react-sizeme@^3.0.1:
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
 
-react-stately@^3.28.0:
-  version "3.28.0"
-  resolved "https://registry.yarnpkg.com/react-stately/-/react-stately-3.28.0.tgz#f2831e50b70b0dcec7e3d7e3787f9dc1df42d9c3"
-  integrity sha512-owEHRGS1zRMwtiR/jeXUjUWyqk8oe53wNtedMvg9+8+NNhDKL4/DXHcIp2A13q08v09xYWgVPtnu8fsF53x2PQ==
-  dependencies:
-    "@react-stately/calendar" "^3.4.2"
-    "@react-stately/checkbox" "^3.6.0"
-    "@react-stately/collections" "^3.10.3"
-    "@react-stately/combobox" "^3.8.0"
-    "@react-stately/data" "^3.11.0"
-    "@react-stately/datepicker" "^3.9.0"
-    "@react-stately/dnd" "^3.2.6"
-    "@react-stately/form" "^3.0.0"
-    "@react-stately/list" "^3.10.1"
-    "@react-stately/menu" "^3.5.7"
-    "@react-stately/numberfield" "^3.7.0"
-    "@react-stately/overlays" "^3.6.4"
-    "@react-stately/radio" "^3.10.0"
-    "@react-stately/searchfield" "^3.5.0"
-    "@react-stately/select" "^3.6.0"
-    "@react-stately/selection" "^3.14.1"
-    "@react-stately/slider" "^3.4.5"
-    "@react-stately/table" "^3.11.3"
-    "@react-stately/tabs" "^3.6.2"
-    "@react-stately/toggle" "^3.7.0"
-    "@react-stately/tooltip" "^3.4.6"
-    "@react-stately/tree" "^3.7.4"
-    "@react-types/shared" "^3.22.0"
-
 react-style-singleton@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.2.1.tgz#f99e420492b2d8f34d38308ff660b60d0b1205b4"
@@ -16555,6 +16453,15 @@ react-transition-group@^4.4.5:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-xarrows@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-xarrows/-/react-xarrows-2.0.2.tgz#7555687612339eaefd4ed55fc5c63f2302726d9c"
+  integrity sha512-tDlAqaxHNmy0vegW/6NdhoWyXJq1LANX/WUAlHyzoHe9BwFVnJPPDghmDjYeVr7XWFmBrVTUrHsrW7GKYI6HtQ==
+  dependencies:
+    "@types/prop-types" "^15.7.3"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
 
 react@^17.0.2:
   version "17.0.2"
@@ -18864,11 +18771,6 @@ use-sidecar@^1.1.2:
   dependencies:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
-
-use-sync-external-store@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 use@^3.1.0:
   version "3.1.1"
