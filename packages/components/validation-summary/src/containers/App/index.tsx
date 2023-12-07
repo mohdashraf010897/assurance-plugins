@@ -20,14 +20,16 @@ import {
   PluginBridgeProvider
 } from '@assurance/plugin-bridge-provider';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
-import Validation from '../../components/ValidationView';
+import ValidationSummaryItem from '../../components/ValidationItem';
 
 const App = () => {
   return (
     <Provider theme={defaultTheme} colorScheme="light">
       <PluginBridgeProvider>
-      <div style={{ color: 'red', fontSize: '20px' }}>Plugin Goes Here</div>
-      <Validation />
+      <div>Validation</div>  
+      <ValidationSummaryItem namespace={'aep-consent-configuration'}/>
+      <ValidationSummaryItem namespace={'aep-consent-registered'}/>
+      <ValidationSummaryItem namespace={'aep-consent-status'}/>
       </PluginBridgeProvider>
     </Provider>
   );
