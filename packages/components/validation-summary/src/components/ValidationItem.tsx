@@ -42,14 +42,16 @@ const ValidationItem = ({namespace}) => {
   const [displayName, setDisplayName] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const [result, setResult] = useState('');
 
   useEffect(() => {
     Object.entries(validation || {}).forEach(([key, value]) => {
-     if (key === namespace && typeof value === 'object' && value !== null && 'displayName' in value && 'description' in value && 'results' in value && 'message' in (value.results as { message: unknown })) {
+     if (key === namespace && typeof value === 'object' && value !== null && 'displayName' in value && 'description' in value && 'results' in value && 'message' in (value.results as { message: unknown }) && 'result' in (value.results as { result: unknown })) {
   console.log(`Namespace: ${key}, Category: ${value.displayName}`);
   setDisplayName(value.displayName as string);
   setDescription(value.description as string);
   setMessage((value.results as { message: string }).message);
+  setResult((value.results as { result: string }).result);
 }
     });
   }, [validation, namespace]);
@@ -57,7 +59,7 @@ const ValidationItem = ({namespace}) => {
   return (
     <Well key={namespace} data-testid={namespace}>
       <Flex alignItems="center">
-        {namespace.result === 'matched' ? (
+        {result === 'matched' ? (
           <Checkmark data-testid="validationSuccess" size="M" color="positive" />
         ) : (
           <Alert
