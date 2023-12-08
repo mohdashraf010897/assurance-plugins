@@ -15,32 +15,32 @@
  * from Adobe.
  **************************************************************************/
 
-import React from 'react';
-import { defaultTheme, Provider } from '@adobe/react-spectrum';
-import { 
-  PluginBridgeProvider, 
-  useEnvironment,
-  useFlags,
-  useImsAccessToken,
-  useImsOrg,
-  useNavigationPath,
-  useFilteredEvents,
-  useTenant,
-  useValidation,
-} from '@assurance/plugin-bridge-provider';
+import React from "react";
+import { PluginView, TimelineToolbar } from '@assurance/timeline-bar';
+import { Item, Tabs, TabList, TabPanels } from "@adobe/react-spectrum";
+import ProviderTable from "./ProviderTable";
+import Timing from "./Timing";
 
-import SampleUI from '../../components/SampleUI';
+const SampleUI = () => (
+  <PluginView>
+    <Tabs aria-label="Sample UI Tabs" height="100%">
+      <TabList>
+        <Item key="provider">Provider table</Item>
+        <Item key="timing">Timing view</Item>
+      </TabList>
+      <TabPanels>
+        <Item key="provider">
+          <ProviderTable />
+        </Item>
+        <Item key="timing">
+          <Timing />
+        </Item>
+      </TabPanels>
+    </Tabs>
+    <TimelineToolbar />
+  </PluginView>
+);
 
-const App = () => {
-  return (
-    <Provider theme={defaultTheme} colorScheme="light">
-      <PluginBridgeProvider>
-        <SampleUI />
-      </PluginBridgeProvider>
-    </Provider>
-  );
-};
-
-export default App;
+export default SampleUI;
 
 
