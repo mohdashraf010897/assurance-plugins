@@ -20,6 +20,7 @@ import { PluginView, TimelineToolbar } from '@assurance/timeline-bar';
 import { Item, Tabs, TabList, TabPanels } from "@adobe/react-spectrum";
 import ProviderTable from "./ProviderTable";
 import Timing from "./Timing";
+import DatastreamViewer from "./DatastreamViewer";
 
 const SampleUI = () => (
   <PluginView>
@@ -27,6 +28,7 @@ const SampleUI = () => (
       <TabList>
         <Item key="provider">Provider table</Item>
         <Item key="timing">Timing view</Item>
+        <Item key="datastream">Datastream viewer</Item>
       </TabList>
       <TabPanels>
         <Item key="provider">
@@ -34,6 +36,9 @@ const SampleUI = () => (
         </Item>
         <Item key="timing">
           <Timing />
+        </Item>
+        <Item key="datastream">
+          <DatastreamViewer />
         </Item>
       </TabPanels>
     </Tabs>
