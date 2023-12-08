@@ -2,10 +2,14 @@
   "name": "@assurance/validation-summary",
   "version": "1.0.0",
   "description": "The validation summary for plugin to use",
-  "main": "index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "author": "Adobe Systems",
   "license": "Apache-2.0",
-  "private": false,
   "scripts": {
     "build": "parcel build src/index.tsx --cache-dir ./.parcel-cache --no-cache",
     "start": "parcel src/index.html --cache-dir ./.parcel-cache  --https --cert ../../../certs/server.crt --key ../../../certs/server.key --host localhost.corp.adobe.com -p 4321 --no-cache"

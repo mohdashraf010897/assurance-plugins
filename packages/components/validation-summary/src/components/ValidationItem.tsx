@@ -44,14 +44,25 @@ const ValidationItem = ({namespace}) => {
   const [message, setMessage] = useState('');
   const [result, setResult] = useState('');
 
+  interface ResultsInterface {
+    message: string;
+    result: string;
+  }
+
+  interface VkeyInterface {
+    displayName: string;
+    description: string;
+    results: ResultsInterface;
+  }
+
   useEffect(() => {
     Object.entries(validation || {}).forEach(([key, value]) => {
-     if (key === namespace && typeof value === 'object' && value !== null && 'displayName' in value && 'description' in value && 'results' in value && 'message' in (value.results as { message: unknown }) && 'result' in (value.results as { result: unknown })) {
-  console.log(`Namespace: ${key}, Category: ${value.displayName}`);
-  setDisplayName(value.displayName as string);
-  setDescription(value.description as string);
-  setMessage((value.results as { message: string }).message);
-  setResult((value.results as { result: string }).result);
+     if (key === namespace && typeof value === 'object' && value !== null && 'displayName' in value && 'description' in value && 'results' in value && 'message' in (value as VkeyInterface).results && 'result' in (value as VkeyInterface).results) {
+  const kValue = value as VkeyInterface;
+  setDisplayName(kValue.displayName);
+  setDescription(kValue.description);
+  setMessage(kValue.results.message);
+  setResult(kValue.results.result);
 }
     });
   }, [validation, namespace]);
