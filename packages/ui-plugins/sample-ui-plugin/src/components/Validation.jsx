@@ -16,7 +16,7 @@
  **************************************************************************/
 
 import React from 'react';
-import  ValidationItem from '@assurance/validation-summary/src/components/ValidationItem';
+import { ValidationItem } from '@assurance/validation-summary';
 import { Button, ComboBox, defaultTheme, Provider, Item} from '@adobe/react-spectrum';
 import { useState, useEffect } from 'react';
 import { Flex } from '@adobe/react-spectrum';

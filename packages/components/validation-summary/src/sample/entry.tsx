@@ -15,7 +15,7 @@
  * from Adobe.
  **************************************************************************/
 
-import App from './containers/App';
+import App from './SampleApp';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -20,7 +20,7 @@ import {
   PluginBridgeProvider
 } from '@assurance/plugin-bridge-provider';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
-import ValidationSummaryItem from '../../components/ValidationItem';
+import ValidationSummaryItem from '../components/ValidationItem';
 
 const App = () => {
   return (
