@@ -17,6 +17,7 @@
 
 import React from "react";
 import { Flex, View } from "@adobe/react-spectrum";
+import type { Responsive, BackgroundColorValue } from "@react-types/shared";
 import { selectEvents, useSelectedEvents } from '@assurance/plugin-bridge-provider';
 import Xarrow from "react-xarrows";
 import EventTooltip from './EventTooltip';
@@ -24,7 +25,6 @@ import { chooseEventLabel } from "@assurance/common-utils";
 import type { Event } from "@assurance/common-utils";
 import { COLORS } from './const';
 import { Branch } from '../types';
-import { setEngine } from "crypto";
 
 type TimingTreeProps = {
   column?: number;
@@ -53,21 +53,21 @@ const TimingTree = ({ branch, path, parentEvent }: TimingTreeProps) => {
       >
         <View
           borderColor="blue-400"
-          borderWidth={isSelected ? 'thicker' : 0}
-          backgroundColor={COLORS[path.length - 1]}
+          borderWidth={isSelected ? 'thicker' : undefined}
+          backgroundColor={COLORS[path.length - 1] as Responsive<BackgroundColorValue>}
           borderRadius="medium" 
           paddingY="size-50"
           paddingX="size-150" 
           overflow="hidden"
           maxWidth={150}
           width={150}
-          height={50}
+          height={40}
         >
           <Flex direction="column" justifyContent="center" height="100%" gap="size-50">
             <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', boxSizing: 'border-box' }}>
               {chooseEventLabel(branch.event)}
             </div>
-            <Flex justifyContent="flex-end" width="100%">
+            <Flex justifyContent="end" width="100%">
               <div style={{ fontSize: 10 }}>
                 {timing ? `${timing} ms` : null}
               </div>

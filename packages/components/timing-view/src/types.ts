@@ -15,6 +15,8 @@
  * from Adobe.
  **************************************************************************/
 
+import type { Event } from "@assurance/common-utils";
+
 export type Branch = {
   event: Event;
   children: Branches;

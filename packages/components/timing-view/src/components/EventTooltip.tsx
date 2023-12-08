@@ -17,10 +17,19 @@
 
 import React from "react";
 import { Tooltip, TooltipTrigger, ActionButton } from "@adobe/react-spectrum";
-import { chooseEventLabel, getTimestampText } from "@assurance/common-utils";
+import { Event, chooseEventLabel, getTimestampText } from "@assurance/common-utils";
 
-const EventTooltip = ({ onPress, event, children, width, height, id }) => (
-  <TooltipTrigger delay={50} closeDelay={0}>
+type EventTooltipProps = {
+  onPress: () => void;
+  event: Event;
+  children: React.ReactNode;
+  width: number;
+  height: number;
+  id?: string;
+}
+
+const EventTooltip = ({ onPress, event, children, width, height, id }: EventTooltipProps) => (
+  <TooltipTrigger delay={50}>
     <ActionButton
       id={id}
       onPress={onPress}

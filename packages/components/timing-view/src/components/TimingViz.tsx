@@ -17,7 +17,9 @@
 
 import React from "react";
 import { Flex, View } from "@adobe/react-spectrum";
+import type { Responsive, BackgroundColorValue } from "@react-types/shared";
 import { selectEvents } from '@assurance/plugin-bridge-provider';
+import type { Event } from "@assurance/common-utils";
 import EventTooltip from './EventTooltip';
 import { COLORS } from './const';
 import { Branch } from '../types';
@@ -46,7 +48,13 @@ const TimingVizRow = ({ size, chain }) => {
                 selectEvents([event.uuid]);
               }}
             >
-              <View backgroundColor={COLORS[index]} height={30} minWidth={width} width={width} borderRadius="small" />
+              <View 
+                backgroundColor={COLORS[index] as Responsive<BackgroundColorValue>} 
+                height={30}
+                minWidth={width} 
+                width={width} 
+                borderRadius="small" 
+              />
             </EventTooltip>
           );
         })}

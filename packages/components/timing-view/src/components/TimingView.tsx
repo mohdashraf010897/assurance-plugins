@@ -21,6 +21,7 @@ import { Flex, View } from "@adobe/react-spectrum";
 import type { Event } from "@assurance/common-utils";
 import type { Branches } from "../types";
 
+
 import TimingTree from './TimingTree';
 import TimingViz from './TimingViz';
 
@@ -48,7 +49,7 @@ const PluginView = ({ events }) => {
 
     for (let i = 0; i < chain.length; i++) {
       const putEvent: Event = chain[i];
-      const eventId = putEvent.payload?.ACPExtensionEventUniqueIdentifier;
+      const eventId: string = putEvent.payload?.ACPExtensionEventUniqueIdentifier as string;
       accPointer[eventId] = accPointer[eventId] || { event: putEvent, children: {} };
       accPointer = accPointer[eventId].children;
     }
@@ -59,7 +60,7 @@ const PluginView = ({ events }) => {
   const SIZE = 300;
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" position="relative">
       {Object.values(branches).map((branch, index) => {
         return (
           <View backgroundColor={index % 2 ? undefined : 'gray-50'}>
