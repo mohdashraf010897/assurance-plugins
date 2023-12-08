@@ -22,6 +22,7 @@ import ProviderTable from "./ProviderTable";
 import Timing from "./Timing";
 import DatastreamViewer from "./DatastreamViewer";
 import Validation from "./Validation";
+import ValidationBuilder from "./ValidationBuilder";
 
 const SampleUI = () => (
   <PluginView>
@@ -30,6 +31,7 @@ const SampleUI = () => (
         <Item key="provider">Provider table</Item>
         <Item key="timing">Timing view</Item>
         <Item key="validation">Validation view</Item>
+        <Item key="validationBuilder">Validation Builder view</Item>
         <Item key="datastream">Datastream viewer</Item>
       </TabList>
       <TabPanels>
@@ -44,6 +46,9 @@ const SampleUI = () => (
         </Item>
         <Item key="validation">
           <Validation />
+        </Item>
+        <Item key="validationBuilder">
+          <ValidationBuilder />
         </Item>
       </TabPanels>
     </Tabs>
