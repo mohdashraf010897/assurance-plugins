@@ -17,16 +17,21 @@
 
 import React from 'react';
 import { ValidationItem } from '@assurance/validation-summary';
+import { Flex } from '@adobe/react-spectrum';
 
-//directly add validatoin items to the validation view
+//Add validatoin items to the validation view
 const namespaces = ['aep-consent-configuration', 'aep-consent-registered', 'adobe-core-configuration'];
 
 const Validation = () => {
-return (
-    <>
-       {namespaces.map(namespace => <ValidationItem key={namespace} namespace={namespace} />)}
-     </>
-   );
- };
+  return (
+    <Flex direction="column" gap="size-100"  alignItems="start">
+      <ValidationItem namespace={'aep-consent-registered'}/>
+      <ValidationItem namespace={'aep-consent-configuration'}/>
+      <ValidationItem namespace={'aep-edge-configured'}/> 
+</Flex>
+     );
+   };
+  
+  export default Validation;
+  
 
-export default Validation;
