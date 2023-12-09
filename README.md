@@ -6,7 +6,7 @@ assurance-plugins is a monorepo that contains templates, components, and utiliti
 
 ### Setup
 
-After checking out the repo, simply run in the root foler
+After checking out the repo, simply run in the root folder
 
 ```bash
 yarn
@@ -17,7 +17,7 @@ Then build the components with
 ```bash
 yarn build --ignore sample-ui-plugin
 ```
-> Note: it requries to use node "^16.14.2 || ^18.13.0". <br>
+> Note: it requires to use node "^16.14.2 || ^18.13.0". <br>
 e.g nvm use 18
 
 ---
