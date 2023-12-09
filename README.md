@@ -29,7 +29,9 @@ Navigate to the plugin directory you'd like to test against and run
 ```
 yarn start
 ```
-> Note: Sample plugin locates at /packages/ui-plugins/sample-ui-plugin
+> Note: Sample plugin locates at /packages/ui-plugins/sample-ui-plugin <br>
+e.g yarn workspace sample-ui-plugin start <br>
+ (run from root folder)
 
 
 This will host your plugin at `https://dev.adobe.com:4321`

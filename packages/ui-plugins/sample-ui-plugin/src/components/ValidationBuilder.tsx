@@ -27,9 +27,9 @@ import {
 //add validation items to the validation view by selecting from a dropdown
 const ValidationBuilder = () => {
   const [selected, setSelected] = useState('');
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const fullSetValidation = useValidation();
-  const [namespaces, setNamespaces] = useState([])
+  const [namespaces, setNamespaces] = useState<string[]>([]);
 
 useEffect(() => {
   if (fullSetValidation) {
@@ -46,14 +46,14 @@ const handleAddValidation = () => {
 return (  
   <Provider theme={defaultTheme} colorScheme="light">
     <Flex direction="row" gap="size-500" alignItems="end">
-      <ComboBox label="Choose a validation" selectedKey={selected} onSelectionChange={setSelected}>
+    <ComboBox label="Choose a validation" selectedKey={selected}  onSelectionChange={(key) => setSelected(key.toString())}>
         {namespaces.map(namespace => (
           <Item key={namespace}>{namespace}</Item>
         ))}
-      </ComboBox>
-      <Button variant="cta" onPress={handleAddValidation}>Add Validation</Button>
-      </Flex>
-      {selectedItems.map(item => <ValidationItem key={item} namespace={item} />)}
+    </ComboBox>
+    <Button variant="cta" onPress={handleAddValidation}>Add Validation</Button>
+    </Flex>
+    {selectedItems.map(item => <ValidationItem key={item} namespace={item} />)}
     </Provider>
   );
 };
