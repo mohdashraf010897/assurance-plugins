@@ -6,13 +6,21 @@ assurance-plugins is a monorepo that contains templates, components, and utiliti
 
 ### Setup
 
-After checking out the repo, simply run
+After checking out the repo, simply run in the root foler
 
 ```bash
 yarn
 ```
----
 
+Then build the components with
+
+```bash
+yarn build --ignore sample-ui-plugin
+```
+> Note: it requries to use node "^16.14.2 || ^18.13.0". <br>
+e.g nvm use 18
+
+---
 
 ### Serving Files
 
@@ -21,13 +29,15 @@ Navigate to the plugin directory you'd like to test against and run
 ```
 yarn start
 ```
+> Note: Sample plugin locates at /packages/ui-plugins/sample-ui-plugin
+
 
 This will host your plugin at `https://dev.adobe.com:4321`
 
 Now, we'll configure Assurance to work with these local files. Open up [Assurance in the dev mode](https://experience.adobe.com/?devMode=true) and browse to Data Collection > Assurance.
 
 ---
-> **_NOTE:_**  If you are developing a plugin on the production envrionment that you will need to load Assurance with the `devMode=true` query parameter (https://experience.adobe.com/?devMode=true#) and use an *.adobe.com domain for your plugin. You can add add `dev.adobe.com` to point to `localhost` by executing this shell command: `echo "127.0.0.1 dev.adobe.com" | sudo tee -a /etc/hosts`_
+> **_NOTE:_**  If you are developing a plugin on the production envrionment that you will need to load Assurance with the `devMode=true` query parameter (https://experience.adobe.com/?devMode=true#) and use an *.adobe.com domain for your plugin. You can add add `dev.adobe.com` to point to `localhost` (/etc/hosts) by executing this shell command: `echo "127.0.0.1 dev.adobe.com" | sudo tee -a /etc/hosts`_ 
 
 > **_NOTE:_**  A UUID value of `dev` will automatically be assigned to the plugin and that same value will be used for the annotation type._
 ---
