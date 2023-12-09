@@ -44,7 +44,7 @@ const TimingTree = ({ branch, path, parentEvent }: TimingTreeProps) => {
     <Flex gap="size-800" alignItems="center">
       <EventTooltip 
         event={branch.event} 
-        width={150} height={50} 
+        width={150} height={60} 
         id={pathToId(path)}
         onPress={() => {
           console.log("doselect");
@@ -61,7 +61,7 @@ const TimingTree = ({ branch, path, parentEvent }: TimingTreeProps) => {
           overflow="hidden"
           maxWidth={150}
           width={150}
-          height={40}
+          height={50}
         >
           <Flex direction="column" justifyContent="center" height="100%" gap="size-50">
             <div style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', boxSizing: 'border-box' }}>
@@ -69,7 +69,7 @@ const TimingTree = ({ branch, path, parentEvent }: TimingTreeProps) => {
             </div>
             <Flex justifyContent="end" width="100%">
               <div style={{ fontSize: 10 }}>
-                {timing ? `${timing} ms` : null}
+                {timing || timing === 0 ? `${timing} ms` : null}
               </div>
             </Flex>
           </Flex>

@@ -19,7 +19,7 @@ import * as R from 'ramda';
 import React from "react";
 import { Flex, View } from "@adobe/react-spectrum";
 import type { Event } from "@assurance/common-utils";
-import type { Branches } from "../types";
+import type { Branch, Branches } from "../types";
 
 
 import TimingTree from './TimingTree';
@@ -57,7 +57,24 @@ const PluginView = ({ events }) => {
     return newAcc;
   }, {}, events);
 
+  const detectLatestTS = (branch: Branch): number => {
+    if (!branch.children || Object.values(branch.children).length === 0) { 
+      return branch?.event?.timestamp as number || 0; 
+    }
+    
+    return R.reduce((acc, child) => {
+      return Math.max(acc, detectLatestTS(child));
+    }, 0, Object.values(branch.children));
+  }
+
+  // now we need to detect the longest time in our branches for scaling the vizualization
+  const longestTime = R.reduce((acc, branch) => {
+    const branchTime = detectLatestTS(branch) - branch.event.timestamp;
+    return Math.max(acc, branchTime);
+  }, 0, Object.values(branches));
+
   const SIZE = 300;
+  const scale = Math.min((SIZE - 5) / longestTime, .3);
 
   return (
     <Flex direction="column" position="relative">
@@ -66,7 +83,7 @@ const PluginView = ({ events }) => {
           <View backgroundColor={index % 2 ? undefined : 'gray-50'}>
             <Flex gap="size-200">
               <View borderEndColor="gray-300" borderEndWidth="thin" width={SIZE + 70} flexShrink={0}>
-                <TimingViz branch={branch} />
+                <TimingViz branch={branch} scale={scale} />
               </View>
               <View marginY="size-200">
                 <TimingTree branch={branch} path={[index]} />

@@ -24,21 +24,17 @@ import EventTooltip from './EventTooltip';
 import { COLORS } from './const';
 import { Branch } from '../types';
 
-const MS_PER_PIXEL = .3;
-
 type Chain = Event[];
 
-const TimingVizRow = ({ size, chain }) => {
+const TimingVizRow = ({ size, chain, scale }) => {
   const start = chain[0].timestamp;
   const total = chain[chain.length - 1].timestamp - start;
-
-  // console.log(size, chain);
 
   return (
     <Flex gap="size-150" alignItems='center'>
       <Flex width={size} gap={1} height={50} alignItems='center'>
         {chain.map((event: Event, index) => {
-          const width = index === 0 ? 6 : Math.max((event.timestamp - chain[index - 1].timestamp) * MS_PER_PIXEL, 6);
+          const width = index === 0 ? 6 : Math.max((event.timestamp - chain[index - 1].timestamp) * scale, 6);
           return (
             <EventTooltip 
               event={event} 
@@ -64,9 +60,10 @@ const TimingVizRow = ({ size, chain }) => {
   );
 };
 
-const TimingViz = ({ branch }) => {
+const TimingViz = ({ branch, scale }) => {
   // flatten the tree into a list of chains
   const chains: Event[][] = [];
+  let longestTime = 0;
 
   const flatten = (branch: Branch, chain?: Chain) => {
     let newChain = chain ? [...chain] : [];
@@ -76,13 +73,14 @@ const TimingViz = ({ branch }) => {
       Object.values(branch.children).forEach((child) => flatten(child, newChain));
     } else {
       chains.push(newChain);
+      longestTime = Math.max(longestTime, newChain[newChain.length - 1].timestamp - newChain[0].timestamp);
     }
   }
   flatten(branch);
-
+  
   return (
     <Flex direction="column" gap="size-100" marginY="size-200">
-      {chains.map((chain) => <TimingVizRow chain={chain} size={300} />)}
+      {chains.map((chain) => <TimingVizRow chain={chain} size={300} scale={scale} />)}
     </Flex>
   )
 
