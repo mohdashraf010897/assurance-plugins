@@ -55,7 +55,6 @@ const SampleUI = () => (
         <Item key="horizontal">
           <DatastreamHorinzontal />
         </Item>
-        </Item>
       </TabPanels>
     </Tabs>
     <TimelineToolbar />
