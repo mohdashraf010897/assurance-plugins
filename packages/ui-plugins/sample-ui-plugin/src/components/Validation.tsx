@@ -19,19 +19,14 @@ import React from 'react';
 import { ValidationItem } from '@assurance/validation-summary';
 import { Flex } from '@adobe/react-spectrum';
 
-//Add validatoin items to the validation view
-const namespaces = ['aep-consent-configuration', 'aep-consent-registered', 'adobe-core-configuration'];
-
 const Validation = () => {
   return (
-    <Flex direction="column" gap="size-100"  alignItems="start">
+    <Flex direction="column" gap="size-150" marginTop="size-100">
       <ValidationItem namespace={'aep-consent-registered'}/>
       <ValidationItem namespace={'aep-consent-configuration'}/>
       <ValidationItem namespace={'aep-edge-configured'}/> 
-</Flex>
-     );
-   };
+    </Flex>
+  );
+};
   
-  export default Validation;
-  
-
+export default Validation;

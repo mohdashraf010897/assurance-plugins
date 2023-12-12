@@ -45,7 +45,7 @@ const handleAddValidation = () => {
 
 return (  
   <Provider theme={defaultTheme} colorScheme="light">
-    <Flex direction="row" gap="size-500" alignItems="end">
+    <Flex direction="row" gap="size-500" alignItems="end" marginTop="size-100">
     <ComboBox label="Choose a validation" selectedKey={selected}  onSelectionChange={(key) => setSelected(key.toString())}>
         {namespaces.map(namespace => (
           <Item key={namespace}>{namespace}</Item>

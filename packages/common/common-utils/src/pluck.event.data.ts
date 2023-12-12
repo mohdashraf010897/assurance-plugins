@@ -15,7 +15,33 @@
  * from Adobe.
  **************************************************************************/
 
-export { default as chooseEventLabel } from './choose.event.label';
-export { default as pluckEventData } from './pluck.event.data';
+import { path } from 'ramda';
+import type { Event } from './types';
 
-export * from './timestamp.util';
+type PluckOptions = {
+  parseJSON: true
+}
+
+export default (events: Event[], pathIn: (string | number)[], options?: PluckOptions): any[] => {
+  const results = (events || []).map(
+    (event) => {
+      let data = path(pathIn, event);
+
+      if (options?.parseJSON) {
+        try {
+          data = JSON.parse(data);
+        } catch (e) { }
+      }
+
+      return {
+        eventId: event.uuid,
+        values: data
+      }
+    }
+  )
+
+  return results;
+
+};
+
+
